@@ -4,82 +4,62 @@
 <div class="messages-container">
     <div class="chat-users-container">
         <h3 class="chat-users-title">Conversations</h3>
-        <div class="user-to-chat-container">
-            <img class="user-to-chat-profile-picture" src="views/assets/images/jinx.jpg">
-            <p class="user-to-chat-name">Mile Raspudic</p>
-        </div>
-        <div class="user-to-chat-container">
-            <img class="user-to-chat-profile-picture" src="views/assets/images/jinx.jpg">
-            <p class="user-to-chat-name">Mile Raspudic</p>
-        </div>
-        <div class="user-to-chat-container">
-            <img class="user-to-chat-profile-picture" src="views/assets/images/jinx.jpg">
-            <p class="user-to-chat-name">Mile Raspudic</p>
-        </div>
-        <div class="user-to-chat-container">
-            <img class="user-to-chat-profile-picture" src="views/assets/images/jinx.jpg">
-            <p class="user-to-chat-name">Mile Raspudic</p>
-        </div>
-        <div class="user-to-chat-container">
-            <img class="user-to-chat-profile-picture" src="views/assets/images/jinx.jpg">
-            <p class="user-to-chat-name">Mile Raspudic</p>
-        </div>
-        <div class="user-to-chat-container">
-            <img class="user-to-chat-profile-picture" src="views/assets/images/jinx.jpg">
-            <p class="user-to-chat-name">Mile Raspudic</p>
-        </div>
-        <div class="user-to-chat-container">
-            <img class="user-to-chat-profile-picture" src="views/assets/images/jinx.jpg">
-            <p class="user-to-chat-name">Mile Raspudic</p>
-        </div>
-        <div class="user-to-chat-container">
-            <img class="user-to-chat-profile-picture" src="views/assets/images/jinx.jpg">
-            <p class="user-to-chat-name">Mile Raspudic</p>
-        </div>
-        <div class="user-to-chat-container">
-            <img class="user-to-chat-profile-picture" src="views/assets/images/jinx.jpg">
-            <p class="user-to-chat-name">Mile Raspudic</p>
-        </div>
+        <?php foreach ($friends as $friend) : ?>
+
+            <?php
+
+            $friend_id = "";
+
+            if ($friend->user_id == $_SESSION['user']->id) {
+                $friend_id = $friend->user_id2;
+            } else {
+                $friend_id = $friend->user_id;
+            }
+
+            ?>
+
+            <a class="chat-user-wrapper" href="chat.php?id=<?php echo $friend_id ?>">
+                <div id="<?php echo $friend_id; ?>-user-to-chat" class="user-to-chat-container">
+                    <img class="user-to-chat-profile-picture" src="views/assets/images<?php echo $user->getUserById($friend_id)->profile_picture_url; ?>">
+                    <p class="user-to-chat-name"><?php echo $user->getUserById($friend_id)->fullname; ?></p>
+                </div>
+            </a>
+        <?php endforeach; ?>
     </div>
     <div class="chat-container">
         <div class="chat-box">
-            <h3 class="chat-box-user-info">Mile Raspudic</h3>
-            <div class="message-sent-container">
-                <div class="message-sent">
-                    <p class="message-sent-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis atque obcaecati consequatur debitis officia placeat quisquam distinctio dignissimos in, a labore vel deserunt minus, eum nisi, rerum molestiae at ea!</p>
-                    <p class="message-sent-at">23-12-2021 16:03:45</p>
-                </div>
-            </div>
-            <div class="message-recieved-container">
-                <div class="message-recieved">
-                    <p class="message-recieved-text">Hello</p>
-                    <p class="message-recieved-at">23-12-2021 16:03:45</p>
-                </div>
-            </div>
-            <div class="message-sent-container">
-                <div class="message-sent">
-                    <p class="message-sent-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis atque obcaecati consequatur debitis officia placeat quisquam distinctio dignissimos in, a labore vel deserunt minus, eum nisi, rerum molestiae at ea!</p>
-                    <p class="message-sent-at">23-12-2021 16:03:45</p>
-                </div>
-            </div>
-            <div class="message-recieved-container">
-                <div class="message-recieved">
-                    <p class="message-recieved-text">Hello</p>
-                    <p class="message-recieved-at">23-12-2021 16:03:45</p>
-                </div>
-            </div>
-            <div class="message-sent-container">
-                <div class="message-sent">
-                    <p class="message-sent-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis atque obcaecati consequatur debitis officia placeat quisquam distinctio dignissimos in, a labore vel deserunt minus, eum nisi, rerum molestiae at ea!</p>
-                    <p class="message-sent-at">23-12-2021 16:03:45</p>
-                </div>
-            </div>
+            <h3 class="chat-box-user-info"><?php echo $user->getUserById($_GET['id'])->fullname ?></h3>
+            <?php foreach ($all_messages as $message) : ?>
+                <?php if ($message->sender_id == $_SESSION['user']->id) : ?>
+                    <div class="message-sent-container">
+                        <div class="message-sent">
+                            <p class="message-sent-text"><?php echo $message->message ?></p>
+                            <p class="message-sent-at">23-12-2021 16:03:45</p>
+                        </div>
+                    </div>
+                <?php elseif ($message->reciever_id == $_SESSION['user']->id) : ?>
+                    <div class="message-recieved-container">
+                        <div class="message-recieved">
+                            <p class="message-recieved-text"><?php echo $message->message ?></p>
+                            <p class="message-recieved-at">23-12-2021 16:03:45</p>
+                        </div>
+                    </div>
+                <?php endif; ?>
+            <?php endforeach; ?>
+
         </div>
-        <div class="type-message">
-            <input class="type-message-input" type="text" id="type-message-input">
-            <button type="submit" name="createPostBtn"><i class="fas fa-paper-plane"></i></button>
+
+        <div class="type-message-container">
+            <div class="type-message">
+                <form action="chat.php?id=<?php echo $_GET['id'] ?>" method="post">
+                    <input class="type-message-input" name="send-message-input" type="text" id="type-message-input" autocomplete="off">
+                    <button type="submit" name="send-message-btn"><i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
         </div>
     </div>
+
+    <a class="update-posts" href="chat.php?id=<?php echo $_GET['id']?>"><i class="fas fa-sync"></i></a>
 </div>
 <script>
     let message_input = document.getElementById('type-message-input');

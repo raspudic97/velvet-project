@@ -36,12 +36,12 @@ class User extends QueryBuilder
         $query->execute([$username, $password]);
         $loggedUser = $query->fetch(PDO::FETCH_OBJ);
 
-        if (true) {
+        if ($loggedUser) {
             session_start();
             $_SESSION['user'] = $loggedUser;
             header("Location: index.php");
         } else {
-            $this->login_status = true;
+            header("Location: login_register.php");
         }
     }
 
@@ -59,8 +59,13 @@ class User extends QueryBuilder
         $loggedUser = $_SESSION['user']->id;
         $username = $_POST['username'];
         $fullname = $_POST['fullname'];
-        $new_password = $_POST['new-password'];
         $profile_picture = "";
+
+        if($_POST['new-password'] != "") {
+            $new_password = $_POST['new-password'];
+        } else {
+            $new_password = $this -> getUserById($loggedUser) -> password;
+        }
 
         if ($_POST['profile-description'] == "") {
             $user_description = "/";

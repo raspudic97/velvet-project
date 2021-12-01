@@ -18,9 +18,9 @@ function ajsearch(logged_user) {
           //Napravi div za rezultat pretrage
           let result_container = document.createElement("div");
           result_container.classList.add("user-result-container");
-          
+
           // Prikazi samo korisnike koji nisu ulogovani korisnik
-          if(res['id'] != logged_user) {
+          if (res["id"] != logged_user) {
             wrapper.appendChild(result_container);
           }
 
@@ -49,7 +49,7 @@ function ajsearch(logged_user) {
 
           //Provjeri da li su korisnici prijatelji
           var is_friend = new FormData();
-          is_friend.append("user_id", res['id']);
+          is_friend.append("user_id", res["id"]);
           is_friend.append("ajax", 1);
 
           fetch("scripts/is_friend.php", { method: "POST", body: is_friend })
@@ -58,29 +58,27 @@ function ajsearch(logged_user) {
               if (result == false) {
                 add_friend_btn.textContent = "Add friend";
                 add_friend_btn.value = "false";
-                add_friend_btn.setAttribute("id", `${res["id"]}-add-friend-btn`);
+                add_friend_btn.setAttribute(
+                  "id",
+                  `${res["id"]}-add-friend-btn`
+                );
                 add_friend_btn.addEventListener("click", function (e) {
                   addFriend(res["id"]);
                 });
               } else {
                 add_friend_btn.textContent = "Friend";
                 add_friend_btn.value = "true";
-                add_friend_btn.setAttribute("id", `${res["id"]}-add-friend-btn`);
+                add_friend_btn.setAttribute(
+                  "id",
+                  `${res["id"]}-add-friend-btn`
+                );
                 add_friend_btn.addEventListener("click", function (e) {
                   addFriend(res["id"]);
                 });
-
-                
               }
-          });
+            });
 
           buttons_container.appendChild(add_friend_btn);
-
-          //Dodaj Message button u buttons container
-          let message_btn = document.createElement("button");
-          message_btn.classList.add("message-user-btn");
-          message_btn.textContent = "Message";
-          buttons_container.appendChild(message_btn);
         }
       } else {
         wrapper.innerHTML = "No results found";
@@ -113,17 +111,17 @@ function addFriend(user_id) {
     url: "scripts/addFriend.php",
     data: {
       user_id: user_id,
-      is_friend: is_friend_btn.value
+      is_friend: is_friend_btn.value,
     },
-    success: function() {
+    success: function () {
       if (is_friend_btn.value == "true") {
         is_friend_btn.value = "false";
         is_friend_btn.innerHTML = "Add friend";
       } else {
         is_friend_btn.value = "true";
         is_friend_btn.innerHTML = "Friend";
-      }    
-    }
+      }
+    },
   });
   return false;
 }

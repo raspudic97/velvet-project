@@ -12,7 +12,7 @@
                 <?php if ($this_user->id == $_SESSION['user']->id) : ?>
                     <a href="edit_profile.php?id=<?php echo $this_user->id?>" class="user-edit-profile">Edit Profile</a>
                 <?php else : ?>
-                    <button class="user-edit-profile">Message</button>
+                    <a href="chat.php?id=<?php echo $this_user -> id?>" class="add-friend-btn">Message</a>
                     <?php if ($is_friend != false) : ?>
                         <a id="<?php echo $this_user->id ?>-add-friend-btn" class="add-friend-btn" value="true" onclick="addFriend(<?php echo $this_user -> id?>)">Friend</a>
                     <?php else : ?>
