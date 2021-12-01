@@ -11,7 +11,7 @@
                 <a href="logout.php"><i class="fas fa-sign-out-alt"></i></a>
                 <a href="#"><i class="fas fa-envelope icons-container-item"></i></a>
                 <a href="#"><i class="fas fa-bell icons-container-item"></i></a>
-                <a href="user_profile.php?id=<?php echo $_SESSION['user'] -> id?>"><img src="views/assets/images/jinx.jpg" class="upper-header-profile-picture icons-container-item"></a>
+                <a href="user_profile.php?id=<?php echo $_SESSION['user'] -> id?>"><img src="views/assets/images<?php echo $user -> getUserById($_SESSION['user'] -> id) -> profile_picture_url; ?>" class="upper-header-profile-picture icons-container-item"></a>
             </div>
         <?php else : ?>
             <a href="login_register.php" class="nav-brand ltp-msg">Login to proceed!</a>

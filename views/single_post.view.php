@@ -8,7 +8,7 @@
 
     <div class="post-header">
         <div class="post-publisher">
-            <img src="views/assets/images/jinx.jpg">
+            <img src="views/assets/images<?php echo $user -> getUserById($single_post -> user_id) -> profile_picture_url;?>">
             <div class="post-publisher-info">
                 <p class="pp-name"><?php echo $user->getUserById($single_post->user_id)->fullname; ?></p>
                 <p class="pp-createdAt"><?php echo $single_post->createdAt ?></p>
@@ -48,7 +48,7 @@
         <div id="<?php echo $single_comment -> id?>" class="comment-section">
             <div class="comment">
                 <div class="comment-left-side">
-                    <img src="views/assets/images/jinx.jpg" alt="" class="comment-profile-picture">
+                    <img src="views/assets/images<?php echo $user -> getUserById($single_comment -> user_id) -> profile_picture_url;?>" alt="" class="comment-profile-picture">
 
                     <div class="comment-info">
                         <p class="comment-username"><?php echo $user->getUserById($single_comment->user_id)->fullname ?></p>

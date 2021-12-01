@@ -3,7 +3,7 @@
 
 <div class="profile-container">
     <div class="user-info-container">
-        <img src="views/assets/images/jinx.jpg" class="info-profile-picture">
+        <img src="views/assets/images<?php echo $user -> getUserById($_SESSION['user'] -> id) -> profile_picture_url; ?>" class="info-profile-picture">
 
         <div class="user-info">
             <div class="info-name">
@@ -77,7 +77,7 @@
             <div onclick="window.location='single_post.php?post_id=<?php echo $single_post->id ?>'">
                 <div class="post-header">
                     <div class="post-publisher">
-                        <img src="views/assets/images/jinx.jpg">
+                        <img src="views/assets/images<?php echo $user -> getUserById($single_post -> user_id) -> profile_picture_url; ?>">
                         <div class="post-publisher-info">
                             <p class="pp-name"><?php echo $this_user->fullname; ?></p>
                             <p class="pp-createdAt"><?php echo $single_post->createdAt ?></p>
