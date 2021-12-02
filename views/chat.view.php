@@ -3,7 +3,7 @@
 
 <div class="messages-container">
     <div class="chat-users-container">
-        <h3 class="chat-users-title">Conversations</h3>
+        <h3 class="chat-users-title">Friends</h3>
         <?php foreach ($friends as $friend) : ?>
 
             <?php
@@ -27,7 +27,10 @@
         <?php endforeach; ?>
     </div>
     <div class="chat-container">
-        <div class="chat-box">
+        <?php if($_GET['id'] == $_SESSION['user'] -> id): ?>
+            <h3 style="padding:2rem 0;">Select friend to chat with.</h3>
+        <?php else: ?>
+            <div class="chat-box">
             <h3 class="chat-box-user-info"><?php echo $user->getUserById($_GET['id'])->fullname ?></h3>
             <?php foreach ($all_messages as $message) : ?>
                 <?php if ($message->sender_id == $_SESSION['user']->id) : ?>
@@ -46,7 +49,6 @@
                     </div>
                 <?php endif; ?>
             <?php endforeach; ?>
-
         </div>
 
         <div class="type-message-container">
@@ -57,6 +59,7 @@
                 </form>
             </div>
         </div>
+        <?php endif; ?>
     </div>
 
     <a class="update-posts" href="chat.php?id=<?php echo $_GET['id']?>"><i class="fas fa-sync"></i></a>

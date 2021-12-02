@@ -967,6 +967,7 @@ hr {
   justify-content: flex-end;
   flex-direction: column;
   padding: 0 1.5rem;
+  margin-top: 3.5rem;
 }
 
 .chat-box-user-info {
@@ -974,8 +975,8 @@ hr {
     position: absolute;
     top: 0;
     color: var(--white);
-    font-weight: 600;
     background-color: var(--main-color-dark);
+    font-weight: 600;
     padding: 1rem;
     border-bottom: 1px solid var(--bg-color);
 }
@@ -1022,6 +1023,14 @@ hr {
   color: var(--dimmed-white);
 }
 
+.type-message-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
 .type-message {
     width: 90%;
     margin: 1.5rem 0;
@@ -1059,12 +1068,66 @@ hr {
     font-size: 1.1rem;
 }
 
-.type-message-container {
-    width: 100%;
-    position: sticky;
-    bottom: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
+/* News */
+
+.news-container {
+  width: 100%;
+  height: 100%;
+  padding: 2rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.news-title {
+  text-align: center;
+  color: var(--white);
+  font-size: 1.5rem;
+  padding-bottom: 2rem;
+  font-weight: 600;
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 2rem;
+  width: 100%;
+  height: auto;
+}
+
+.cards {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  flex-direction: row;
+}
+
+.result-card {
+  width: 250px;
+  border-radius: 5px;
+  overflow: hidden;
+  color: var(--white);
+  background-color: var(--main-color-dark);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.result-card img {
+  width: 100%;
+  height: auto;
+}
+
+.card-info {
+  padding: 1rem 1.5rem;
+}
+
+.card-info p {
+  padding: 1rem 0 ;
+}
+
+.card-info a {
+  color: var(--secondary-color-blue);
 }
