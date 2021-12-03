@@ -3,20 +3,20 @@
 
 <div class="profile-container">
     <div class="user-info-container">
-        <img src="views/assets/images<?php echo $user -> getUserById($_SESSION['user'] -> id) -> profile_picture_url; ?>" class="info-profile-picture">
+        <img src="views/assets/images<?php echo $user->getUserById($_SESSION['user']->id)->profile_picture_url; ?>" class="info-profile-picture">
 
         <div class="user-info">
             <div class="info-name">
                 <p class="user-info-name"><?php echo $this_user->fullname ?></p>
 
                 <?php if ($this_user->id == $_SESSION['user']->id) : ?>
-                    <a href="edit_profile.php?id=<?php echo $this_user->id?>" class="user-edit-profile">Edit Profile</a>
+                    <a href="edit_profile.php?id=<?php echo $this_user->id ?>" class="user-edit-profile">Edit Profile</a>
                 <?php else : ?>
-                    <a href="chat.php?id=<?php echo $this_user -> id?>" class="add-friend-btn">Message</a>
+                    <a href="chat.php?id=<?php echo $this_user->id ?>" class="add-friend-btn">Message</a>
                     <?php if ($is_friend != false) : ?>
-                        <a id="<?php echo $this_user->id ?>-add-friend-btn" class="add-friend-btn" value="true" onclick="addFriend(<?php echo $this_user -> id?>)">Friend</a>
+                        <a id="<?php echo $this_user->id ?>-add-friend-btn" class="add-friend-btn" value="true" onclick="addFriend(<?php echo $this_user->id ?>)">Friend</a>
                     <?php else : ?>
-                        <a id="<?php echo $this_user->id ?>-add-friend-btn" class="add-friend-btn" value="false" onclick="addFriend(<?php echo $this_user -> id?>)">Add friend</a>
+                        <a id="<?php echo $this_user->id ?>-add-friend-btn" class="add-friend-btn" value="false" onclick="addFriend(<?php echo $this_user->id ?>)">Add friend</a>
                     <?php endif; ?>
                 <?php endif; ?>
             </div>
@@ -42,33 +42,6 @@
                     </div>
                 </div>
         </div>
-
-        <div class="user-friends">
-            <div class="user-friends-header">
-                <p class="user-friends-title">Friends</p>
-                <a href="#" class="user-all-friends">All</a>
-            </div>
-
-            <div class="user-friend">
-                <img class="user-friend-profile-picture" src="views/assets/images/jinx.jpg">
-                <p class="user-friend-name">Ime Prezime</p>
-            </div>
-
-            <div class="user-friend">
-                <img class="user-friend-profile-picture" src="views/assets/images/jinx.jpg">
-                <p class="user-friend-name">Ime Prezime</p>
-            </div>
-
-            <div class="user-friend">
-                <img class="user-friend-profile-picture" src="views/assets/images/jinx.jpg">
-                <p class="user-friend-name">Ime Prezime</p>
-            </div>
-
-            <div class="user-friend">
-                <img class="user-friend-profile-picture" src="views/assets/images/jinx.jpg">
-                <p class="user-friend-name">Ime Prezime</p>
-            </div>
-        </div>
     </div>
 
 <?php else : ?>
@@ -77,7 +50,7 @@
             <div onclick="window.location='single_post.php?post_id=<?php echo $single_post->id ?>'">
                 <div class="post-header">
                     <div class="post-publisher">
-                        <img src="views/assets/images<?php echo $user -> getUserById($single_post -> user_id) -> profile_picture_url; ?>">
+                        <img src="views/assets/images<?php echo $user->getUserById($single_post->user_id)->profile_picture_url; ?>">
                         <div class="post-publisher-info">
                             <p class="pp-name"><?php echo $this_user->fullname; ?></p>
                             <p class="pp-createdAt"><?php echo $single_post->createdAt ?></p>
@@ -115,33 +88,6 @@
             </div>
         </div>
     <?php endforeach; ?>
-</div>
-
-<div class="user-friends">
-    <div class="user-friends-header">
-        <p class="user-friends-title">Friends</p>
-        <a href="#" class="user-all-friends">All</a>
-    </div>
-
-    <div class="user-friend">
-        <img class="user-friend-profile-picture" src="views/assets/images/jinx.jpg">
-        <p class="user-friend-name">Ime Prezime</p>
-    </div>
-
-    <div class="user-friend">
-        <img class="user-friend-profile-picture" src="views/assets/images/jinx.jpg">
-        <p class="user-friend-name">Ime Prezime</p>
-    </div>
-
-    <div class="user-friend">
-        <img class="user-friend-profile-picture" src="views/assets/images/jinx.jpg">
-        <p class="user-friend-name">Ime Prezime</p>
-    </div>
-
-    <div class="user-friend">
-        <img class="user-friend-profile-picture" src="views/assets/images/jinx.jpg">
-        <p class="user-friend-name">Ime Prezime</p>
-    </div>
 </div>
 </div>
 <?php endif; ?>

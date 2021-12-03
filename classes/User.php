@@ -13,7 +13,7 @@ class User extends QueryBuilder
         $email = $_POST['register_email'];
         $password = $_POST['register_password'];
         $account_status = 'user';
-        $profile_picture_url = '/jinx.jpg';
+        $profile_picture_url = '/default.png';
         $user_description = '/';
 
         $sql = "INSERT INTO user VALUES(NULL,?,?,?,?,?,?,?)";

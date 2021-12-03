@@ -1,6 +1,7 @@
 <?php require_once 'views/partials/top.php' ?>
 <?php require_once 'views/partials/navbar.php' ?>
 
+<h3 class="chat-box-user-info"><?php echo $user->getUserById($_GET['id'])->fullname ?></h3>
 <div class="messages-container">
     <div class="chat-users-container">
         <h3 class="chat-users-title">Friends</h3>
@@ -26,31 +27,29 @@
             </a>
         <?php endforeach; ?>
     </div>
+
     <div class="chat-container">
         <?php if($_GET['id'] == $_SESSION['user'] -> id): ?>
             <h3 style="padding:2rem 0;">Select friend to chat with.</h3>
         <?php else: ?>
+
             <div class="chat-box">
-            <h3 class="chat-box-user-info"><?php echo $user->getUserById($_GET['id'])->fullname ?></h3>
             <?php foreach ($all_messages as $message) : ?>
                 <?php if ($message->sender_id == $_SESSION['user']->id) : ?>
                     <div class="message-sent-container">
                         <div class="message-sent">
                             <p class="message-sent-text"><?php echo $message->message ?></p>
-                            <p class="message-sent-at">23-12-2021 16:03:45</p>
                         </div>
                     </div>
                 <?php elseif ($message->reciever_id == $_SESSION['user']->id) : ?>
                     <div class="message-recieved-container">
                         <div class="message-recieved">
                             <p class="message-recieved-text"><?php echo $message->message ?></p>
-                            <p class="message-recieved-at">23-12-2021 16:03:45</p>
                         </div>
                     </div>
                 <?php endif; ?>
             <?php endforeach; ?>
         </div>
-
         <div class="type-message-container">
             <div class="type-message">
                 <form action="chat.php?id=<?php echo $_GET['id'] ?>" method="post">
@@ -61,9 +60,9 @@
         </div>
         <?php endif; ?>
     </div>
-
-    <a class="update-posts" href="chat.php?id=<?php echo $_GET['id']?>"><i class="fas fa-sync"></i></a>
+    <a id="update-posts" class="update-posts" href="chat.php?id=<?php echo $_GET['id']?>"><i class="fas fa-sync"></i></a>
 </div>
+<input id="focues-here" type="hidden">
 <script>
     let message_input = document.getElementById('type-message-input');
 

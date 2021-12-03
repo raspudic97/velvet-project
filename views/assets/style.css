@@ -310,9 +310,8 @@ a {
   cursor: pointer;
 }
 
-label {
+input[type="file"] {
   color: white;
-  padding: 0 0 1rem 0;
 }
 
 /* Posts */
@@ -378,7 +377,6 @@ label {
 .post p {
   width: 100%;
   justify-content: flex-start;
-  overflow-wrap: anywhere;
   padding: 0.5rem;
 }
 
@@ -607,7 +605,7 @@ hr {
 }
 
 .user-description {
-  width: 110%;
+  width: 100%;
   font-size: 0.75rem;
   color: var(--dimmed-white);
   line-height: 1.2rem;
@@ -647,7 +645,7 @@ hr {
 }
 
 .user-posts {
-  width: 70%;
+  width: 100%;
 }
 
 .user-friend-profile-picture {
@@ -662,7 +660,7 @@ hr {
   margin: 1rem 1.5rem;
   padding: 1rem 1.5rem;
   border-radius: 5px;
-  display: flex;
+  display: none;
   flex-direction: column;
   width: 30%;
   background-color: var(--main-color-dark);
@@ -869,74 +867,74 @@ hr {
 /* Chat */
 
 .messages-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    height: 86vh;
-    width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 86vh;
+  width: 100%;
 }
 
 .chat-users-container {
-    position: relative;
-    width: 15%;
-    height: 80%;
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-direction: column;
-    background-color: var(--main-color-dark);
-    border-radius: 5px;
-    overflow-y: scroll;
+  position: relative;
+  width: 15%;
+  height: 80%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  background-color: var(--main-color-dark);
+  border-radius: 5px;
+  overflow-y: scroll;
 }
 
 .chat-users-title {
-    width: 100%;
-    position: sticky;
-    top: 0;
-    color: var(--white);
-    background-color: var(--main-color-dark);
-    text-align: center;
-    padding: 1rem 0;
-    border-bottom: 1px solid var(--bg-color);
+  width: 100%;
+  position: sticky;
+  top: 0;
+  color: var(--white);
+  background-color: var(--main-color-dark);
+  text-align: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--bg-color);
 }
 
 .user-to-chat-container {
-    width: 100%;
-    padding: 1rem 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-direction: row;
-    cursor: pointer;
+  width: 100%;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  cursor: pointer;
 }
 
 .user-to-chat-profile-picture {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .user-to-chat-name {
-    padding: 0 1.5rem;
-    color: white;
-    font-weight: 600;
+  padding: 0 1.5rem;
+  color: white;
+  font-weight: 600;
 }
 
 .chat-container {
-    width: 55%;
-    height: 80%;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-direction: column;
-    background-color: var(--main-color-dark);
-    overflow-y: scroll;
-    color: var(--white);
-    border-radius: 5px;
-    margin: 0 2rem;
+  width: 55%;
+  height: 80%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  background-color: var(--main-color-dark);
+  overflow-y: scroll;
+  color: var(--white);
+  border-radius: 5px;
+  margin-left: 2rem;
 }
 
 .chat-container::-webkit-scrollbar-track,
@@ -947,12 +945,12 @@ hr {
 }
 
 .chat-container::-webkit-scrollbar,
-.chat-users-container::-webkit-scrollbar  {
+.chat-users-container::-webkit-scrollbar {
   width: 10px;
 }
 
 .chat-container::-webkit-scrollbar-thumb,
-.chat-users-container::-webkit-scrollbar-thumb  {
+.chat-users-container::-webkit-scrollbar-thumb {
   border-radius: 10px;
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background-color: var(--secondary-color-blue);
@@ -961,24 +959,22 @@ hr {
 
 .chat-box {
   width: 100%;
-  height: 100%;
   display: flex;
   align-items: center;
   justify-content: flex-end;
   flex-direction: column;
   padding: 0 1.5rem;
-  margin-top: 3.5rem;
 }
 
 .chat-box-user-info {
-    width: 100%;
-    position: absolute;
-    top: 0;
-    color: var(--white);
-    background-color: var(--main-color-dark);
-    font-weight: 600;
-    padding: 1rem;
-    border-bottom: 1px solid var(--bg-color);
+  width: calc(70% + 2rem);
+  margin: 1.5rem auto;
+  color: var(--white);
+  background-color: var(--secondary-color-purple);
+  font-weight: 600;
+  padding: 1rem;
+  border-bottom: 1px solid var(--bg-color);
+  border-radius: 5px;
 }
 
 .message-sent-container,
@@ -991,7 +987,7 @@ hr {
 }
 
 .message-recieved-container {
-    align-items: flex-start;
+  align-items: flex-start;
 }
 
 .message-sent,
@@ -1004,11 +1000,12 @@ hr {
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
+  overflow-wrap: anywhere;
   background-color: var(--secondary-color-blue);
 }
 
 .message-recieved {
-    background-color: var(--secondary-color-purple);
+  background-color: var(--secondary-color-purple);
 }
 
 .message-sent-text,
@@ -1024,48 +1021,50 @@ hr {
 }
 
 .type-message-container {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
+  width: 100%;
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
 }
 
 .type-message {
-    width: 90%;
-    margin: 1.5rem 0;
-    padding: 0.75rem 0.5rem;
-    background-color: var(--main-color-light);
-    border-radius: 5px;
-    color: var(--white);
+  width: 95%;
+  margin: 1.5rem 0;
+  padding: 0.75rem 0.5rem;
+  background-color: var(--main-color-light);
+  border-radius: 5px;
+  color: var(--white);
 }
 
 .type-message form {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .type-message-input {
-    color: var(--white);
-    background: none;
-    border: none;
-    outline: none;
+  width: 90%;
+  color: var(--white);
+  background: none;
+  border: none;
+  outline: none;
 }
 
 .type-message button {
-    padding: 0 1rem;
-    cursor: pointer;
-    background: none;
-    border: none;
-    outline: none;
+  padding: 0 1rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  outline: none;
 }
 
 .type-message i {
-    color: var(--white);
-    font-size: 1.1rem;
+  color: var(--white);
+  font-size: 1.1rem;
 }
 
 /* News */
@@ -1125,9 +1124,191 @@ hr {
 }
 
 .card-info p {
-  padding: 1rem 0 ;
+  padding: 1rem 0;
 }
 
 .card-info a {
   color: var(--secondary-color-blue);
+}
+
+/* Responsivnes */
+@media only screen and (max-width: 1650px) {
+  .messages-container {
+    flex-direction: column-reverse;
+  }
+
+  .chat-users-container {
+    width: 90%;
+    margin: 1.5rem 0;
+  }
+
+  .chat-container {
+    height: 86vh;
+    width: 90%;
+    margin: 0;
+  }
+
+  .chat-box-user-info {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 1450px) {
+  .cards-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .cards-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+@media only screen and (max-width: 710px) {
+  .lower-header {
+    display: none;
+  }
+
+  .home-create-post,
+  .home-create-post form {
+    margin: 0;
+    padding: 1.5rem 1rem 0 1rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .home-create-post img {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    margin-top: 0;
+  }
+
+  .home-create-post form input {
+    padding: 0;
+    width: 100%;
+    margin-top: 1rem;
+    border-radius: 5px;
+  }
+
+  .home-create-post form button {
+    width: 100%;
+    margin: 1.5rem 0 1.5rem 0;
+    padding: 0.5rem 0;
+    border-radius: 5px;
+    background-color: var(--secondary-color-blue);
+  }
+
+  .post-description {
+    padding: 0.5rem 0.75rem !important;
+    background-color: var(--main-color-light);
+  }
+
+  .post img {
+    border-radius: 10px;
+  }
+
+  .update-posts {
+    font-size: 1rem;
+    padding: 0.45rem 0.50rem;
+    bottom: 1rem;
+    right: 1rem;
+  }
+
+  .user-info-container {
+    flex-direction: column;
+  }
+
+  .info-name {
+    flex-direction: column;
+  }
+
+  .info-profile-picture {
+    margin: 0;
+  }
+
+  .user-edit-profile {
+    margin:1rem 0;
+  }
+
+  .user-description {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+
+  .user-stats {
+    justify-content: space-around;
+  }
+
+  .user-stats p {
+    margin: 0;
+    padding: 0;
+  }
+
+  .user-posts-container {
+    flex-direction: column;
+  }
+
+  .user-posts {
+    width: 100%;
+  }
+
+  .user-post-container {
+    width: 100%;
+  }
+
+  .user-friends {
+    display: flex;
+    width: 100%;
+    margin: 0 0 1.5rem 0;
+  }
+
+  .search-user-form form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .search-user-input {
+    margin: 0.75rem 0;
+  }
+
+  .search-user-btn {
+    width: 100%;
+    margin: 0.75rem 0;
+    background-color: var(--secondary-color-blue);
+  }
+
+  .user-result-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid var(--bg-color);
+    border-bottom: 1px solid var(--bg-color);
+  }
+
+  .user-search-result {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .user-search-result img {
+    margin-bottom: 1rem;
+  }
+
+  .add-friend-btn {
+    margin: 1rem 0 0.5rem 0;
+  }
+
+  .cards-container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
 }

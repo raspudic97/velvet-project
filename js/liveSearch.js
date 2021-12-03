@@ -32,10 +32,10 @@ function ajsearch(logged_user) {
           user_info.classList.add("user-search-result");
           result_container.appendChild(user_info);
 
-          //Dodaj korisnikovu profilnu sliku rezultat
+          //Dodaj korisnikovu profilnu sliku u rezultat
           let user_profile_picture = document.createElement("img");
           user_profile_picture.classList.add("user-search-profile-picture");
-          user_profile_picture.src = "views/assets/images/jinx.jpg";
+          user_profile_picture.src = "views/assets/images" + res['profile_picture_url'];
           user_info.insertBefore(user_profile_picture, user_info.firstChild);
 
           //Buttons container
