@@ -40,7 +40,7 @@
     <div class="add-comment">
         <form action="single_post.php" method="POST">
             <input type="hidden" name="comment_post_id" value="<?php echo $single_post->id ?>">
-            <input type="text" class="post-comment" placeholder="Add a comment..." name="comment_description" required>
+            <input type="text" class="post-comment" placeholder="Add a comment..." name="comment_description" autocomplete="off" required>
             <button type="submit" name="add-comment-btn" class="add-comment-btn"><i class="fas fa-paper-plane"></i></button>
         </form>
     </div>
