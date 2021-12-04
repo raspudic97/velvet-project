@@ -88,7 +88,7 @@ class Post extends QueryBuilder
     public function getPostsByUserId($id) {
         $user_id = $id;
 
-        $sql = "SELECT * FROM post WHERE user_id = ?";
+        $sql = "SELECT * FROM post WHERE user_id = ? ORDER BY id DESC";
         $query = $this -> db -> prepare($sql);
         $query -> execute([$user_id]);
 

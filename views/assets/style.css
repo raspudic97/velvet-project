@@ -938,19 +938,22 @@ hr {
 }
 
 .chat-container::-webkit-scrollbar-track,
-.chat-users-container::-webkit-scrollbar-track {
+.chat-users-container::-webkit-scrollbar-track,
+.html::-webkit-scrollbar-track {
   padding: 2px 0;
   background-color: var(--secondary-color-purple);
   border-radius: 5px;
 }
 
 .chat-container::-webkit-scrollbar,
-.chat-users-container::-webkit-scrollbar {
+.chat-users-container::-webkit-scrollbar,
+.html::-webkit-scrollbar {
   width: 10px;
 }
 
 .chat-container::-webkit-scrollbar-thumb,
-.chat-users-container::-webkit-scrollbar-thumb {
+.chat-users-container::-webkit-scrollbar-thumb,
+.html::-webkit-scrollbar-thumb  {
   border-radius: 10px;
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background-color: var(--secondary-color-blue);
@@ -1131,6 +1134,248 @@ hr {
   color: var(--secondary-color-blue);
 }
 
+label {
+  color: white;
+  padding: 1rem 0;
+}
+
+/* Wallet */
+.wallet-container {
+  width: 70%;
+  margin: 2rem auto;
+  border-radius: 5px;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: var(--main-color-dark);
+}
+
+.wallet-balance {
+  width: 90%;
+  margin: 2rem 0;
+  padding: 0.5rem 0.75rem;
+  border-radius: 5px;
+  background-color: var(--main-color-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.transactions-title {
+  padding-bottom: 2rem;
+}
+
+.transactions-container {
+  width: 90%;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.money-recieved,
+.money-sent {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 1.5rem;
+  background-color: var(--main-color-light);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.recieved-from,
+.sent-to {
+  font-weight: 600;
+}
+
+.recieved-at,
+.sent-at {
+  font-size: 0.75rem;
+  color: var(--dimmed-white);
+}
+
+.recieved-value {
+  color: limegreen;
+}
+
+.sent-value {
+  color: var(--sub-color-rose);
+}
+
+.send-money-popup {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(59, 59, 134, 0.5);
+  backdrop-filter: blur(10px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: var(--white);
+}
+
+.close-popup-btn {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: white;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.wallet-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.wallet-container form {
+  padding: 1.5rem 0;
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.input-container {
+  width: 70%;
+  background-color: var(--main-color-dark);
+  padding: 1.5rem;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-container h3 {
+  padding-bottom: 1.5rem;
+}
+
+.deposit-title {
+  margin-top: 1rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.send-amount-input,
+.deposit-input {
+  width: 90%;
+  margin-bottom: 1.5rem;
+  padding: 0.5rem 0.75rem;
+  border: none;
+  color: var(--white);
+  border-radius: 5px;
+  background-color: var(--main-color-light);
+}
+
+.deposit-input {
+  margin: 0 1.5rem 0 0;
+  border: 1px solid var(--main-color-light);
+}
+
+.deposit_sucess {
+  width: 90%;
+  border-radius: 5px;
+  padding: 0.5rem 0.75rem;
+  color: limegreen;
+  border: 1px solid limegreen;
+}
+
+.deposit_error {
+  width: 90%;
+  border-radius: 5px;
+  padding: 0.5rem 0.75rem;
+  color: var(--sub-color-rose);
+  border: 1px solid var(--sub-color-rose);
+}
+
+.send-amount-input::placeholder,
+.deposit-input::placeholder {
+  color: var(--dimmed-white);
+}
+
+.send-amount-input:focus,
+.deposit-input:focus {
+  outline: none;
+  border: none;
+}
+
+.send-money-btn,
+.deposit-money-btn {
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 0.75rem;
+  background-color: var(--secondary-color-blue);
+}
+
+.show {
+  display: flex;
+}
+
+.friends-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.display-friends {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.display-friends h3 {
+  text-align: center;
+  font-weight: 600;
+  color: white;
+  font-size: 1.5rem;
+  margin: 1.5rem;
+}
+
+.friend {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  color: var(--white);
+  border-radius: 5px;
+  background-color: var(--main-color-dark);
+  padding: 0.75rem 0;
+  margin-bottom: 1rem ;
+}
+
+.friend a {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.friend img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 1rem;
+}
+
+
 /* Responsivnes */
 @media only screen and (max-width: 1650px) {
   .messages-container {
@@ -1164,7 +1409,6 @@ hr {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-
 
 @media only screen and (max-width: 710px) {
   .lower-header {
@@ -1214,7 +1458,7 @@ hr {
 
   .update-posts {
     font-size: 1rem;
-    padding: 0.45rem 0.50rem;
+    padding: 0.45rem 0.5rem;
     bottom: 1rem;
     right: 1rem;
   }
@@ -1232,7 +1476,7 @@ hr {
   }
 
   .user-edit-profile {
-    margin:1rem 0;
+    margin: 1rem 0;
   }
 
   .user-description {
@@ -1248,10 +1492,6 @@ hr {
   .user-stats p {
     margin: 0;
     padding: 0;
-  }
-
-  .user-posts-container {
-    flex-direction: column;
   }
 
   .user-posts {
@@ -1311,4 +1551,17 @@ hr {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
   }
+
+  .edit-profile-container form {
+    width: 90%;
+  }
+
+  .display-friends {
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
 }
+

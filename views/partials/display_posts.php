@@ -33,7 +33,6 @@
                 <?php endif; ?>
 
                 <a href="<?php echo "single_post.php?post_id=".$single_post -> id?>"><i class="far fa-comment"></i></a>
-                <a href="#"><i class="fas fa-share"></i></a>
                 <?php if ($_SESSION['user']->account_status == "admin" || $_SESSION['user']->id == $single_post->user_id) : ?>
                     <a onclick="deletePost()" class="remove-post-a"><i id="<?php echo $single_post->id ?>-remove" class="remove-post fas fa-trash-alt"></i></a>
                 <?php endif; ?>

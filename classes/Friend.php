@@ -27,4 +27,16 @@ class Friend extends QueryBuilder
 
         return $result;
     }
+
+    public function getFriendsById($id) {
+        $user_id = $id;
+
+        $sql = "SELECT * FROM friends WHERE user_id = ? OR user_id2 = ?";
+
+        $query = $this -> db -> prepare($sql);
+        $query -> execute([$user_id, $user_id]);
+        $result = $query -> fetchAll(PDO::FETCH_OBJ);
+
+        return $result;
+    }
 }

@@ -7,13 +7,15 @@
     <?php endif; ?>
 
     <div class="post-header">
-        <div class="post-publisher">
-            <img src="views/assets/images<?php echo $user -> getUserById($single_post -> user_id) -> profile_picture_url;?>">
-            <div class="post-publisher-info">
-                <p class="pp-name"><?php echo $user->getUserById($single_post->user_id)->fullname; ?></p>
-                <p class="pp-createdAt"><?php echo $single_post->createdAt ?></p>
+        <a href="user_profile.php?id=<?php echo $single_post->user_id ?>">
+            <div class="post-publisher">
+                <img src="views/assets/images<?php echo $user->getUserById($single_post->user_id)->profile_picture_url; ?>">
+                <div class="post-publisher-info">
+                    <p class="pp-name"><?php echo $user->getUserById($single_post->user_id)->fullname; ?></p>
+                    <p class="pp-createdAt"><?php echo $single_post->createdAt ?></p>
+                </div>
             </div>
-        </div>
+        </a>
     </div>
 
     <div class="post">
@@ -29,7 +31,6 @@
             <?php else : ?>
                 <button id="<?php echo $single_post->id ?>-post" type="submit" value="false"><i class="far fa-heart"></i></button>
             <?php endif; ?>
-            <a href="#"><i class="fas fa-share"></i></a>
         </form>
 
     </div>
@@ -45,13 +46,15 @@
     </div>
 
     <?php foreach ($comments as $single_comment) : ?>
-        <div id="<?php echo $single_comment -> id?>" class="comment-section">
+        <div id="<?php echo $single_comment->id ?>" class="comment-section">
             <div class="comment">
                 <div class="comment-left-side">
-                    <img src="views/assets/images<?php echo $user -> getUserById($single_comment -> user_id) -> profile_picture_url;?>" alt="" class="comment-profile-picture">
+                    <img src="views/assets/images<?php echo $user->getUserById($single_comment->user_id)->profile_picture_url; ?>" alt="" class="comment-profile-picture">
 
                     <div class="comment-info">
-                        <p class="comment-username"><?php echo $user->getUserById($single_comment->user_id)->fullname ?></p>
+                        <a href="user_profile.php?id=<?php echo $single_comment->user_id ?>">
+                            <p class="comment-username"><?php echo $user->getUserById($single_comment->user_id)->fullname ?></p>
+                        </a>
                         <p class="comment-description"><?php echo $single_comment->description ?></p>
                     </div>
                 </div>
@@ -63,7 +66,7 @@
                         <button id="<?php echo $single_comment->id ?>-comment" class="comment-like-btn" type="submit" value="false"><i class="far fa-heart"></i></button>
                     <?php endif; ?>
 
-                    <?php if ($_SESSION['user']->account_status == "admin" || $_SESSION['user']->id == $single_comment->user_id || $single_post -> user_id == $_SESSION['user'] -> id) : ?>
+                    <?php if ($_SESSION['user']->account_status == "admin" || $_SESSION['user']->id == $single_comment->user_id || $single_post->user_id == $_SESSION['user']->id) : ?>
                         <a onclick="deleteComment()" class="remove-post-a"><i id="<?php echo $single_comment->id ?>-remove" class="remove-comment fas fa-trash-alt"></i></a>
                     <?php endif; ?>
                 </form>

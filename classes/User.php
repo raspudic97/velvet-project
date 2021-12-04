@@ -19,7 +19,7 @@ class User extends QueryBuilder
         $sql = "INSERT INTO user VALUES(NULL,?,?,?,?,?,?,?)";
         $query = $this->db->prepare($sql);
         $query->execute([$username, $fullname, $email, $password, $account_status, $profile_picture_url, $user_description]);
-
+        
         if ($query) {
             $this->register_status = true;
         }
@@ -39,6 +39,7 @@ class User extends QueryBuilder
         if ($loggedUser) {
             session_start();
             $_SESSION['user'] = $loggedUser;
+
             header("Location: index.php");
         } else {
             header("Location: login_register.php");
@@ -51,6 +52,7 @@ class User extends QueryBuilder
         $query = $this->db->prepare($sql);
         $query->execute([$id]);
         $result = $query->fetch(PDO::FETCH_OBJ);
+        
         return $result;
     }
 

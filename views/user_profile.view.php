@@ -1,9 +1,22 @@
 <?php require_once 'views/partials/top.php' ?>
 <?php require_once 'views/partials/navbar.php' ?>
 
+<div id="send-money-popup" class="send-money-popup">
+    <div class="input-container">
+        <h3>Send money to <?php echo explode(" ", $user -> getUserById($_GET['id']) -> fullname)[0] ?></h3>
+
+        <form action="user_profile.php?id=<?php echo $_GET['id'] ?>" method="POST">
+            <input class="send-amount-input" type="number" name="send-amount" placeholder="Amount of money" required autocomplete="off">
+            <input class="send-money-btn" type="submit" name="send-money-btn">
+        </form>
+    </div>
+
+    <button id="hide-popup" class="close-popup-btn">X</button>
+</div>
+
 <div class="profile-container">
     <div class="user-info-container">
-        <img src="views/assets/images<?php echo $user->getUserById($_SESSION['user']->id)->profile_picture_url; ?>" class="info-profile-picture">
+        <img src="views/assets/images<?php echo $user->getUserById($_GET['id'])->profile_picture_url; ?>" class="info-profile-picture">
 
         <div class="user-info">
             <div class="info-name">
@@ -13,6 +26,7 @@
                     <a href="edit_profile.php?id=<?php echo $this_user->id ?>" class="user-edit-profile">Edit Profile</a>
                 <?php else : ?>
                     <a href="chat.php?id=<?php echo $this_user->id ?>" class="add-friend-btn">Message</a>
+                    <a id="show-popup" class="add-friend-btn">Send money</a>
                     <?php if ($is_friend != false) : ?>
                         <a id="<?php echo $this_user->id ?>-add-friend-btn" class="add-friend-btn" value="true" onclick="addFriend(<?php echo $this_user->id ?>)">Friend</a>
                     <?php else : ?>
@@ -27,8 +41,8 @@
                 <p class="user-description">User did not provide any informations yet.</p>
             <?php endif; ?>
             <div class="user-stats">
-                <p class="user-posts-number">3120 Posts</p>
-                <p class="user-friends-number">296K Friends</p>
+                <p class="user-posts-number"><?php echo count($post -> getPostsByUserId($_GET['id'])) ?> Posts</p>
+                <a href="friends.php?id=<?php echo $_GET['id']?>"><p class="user-friends-number"><?php echo count($friend -> getFriendsById($_GET['id'])) ?> Friends</p></a>
             </div>
         </div>
     </div>
@@ -79,7 +93,6 @@
                     <?php endif; ?>
 
                     <a href="<?php echo "single_post.php?post_id=" . $single_post->id ?>"><i class="far fa-comment"></i></a>
-                    <a href="#"><i class="fas fa-share"></i></a>
                     <?php if ($_SESSION['user']->account_status == "admin" || $_SESSION['user']->id == $single_post->user_id) : ?>
                         <a onclick="deletePost()" class="remove-post-a"><i id="<?php echo $single_post->id ?>-remove" class="remove-post fas fa-trash-alt"></i></a>
                     <?php endif; ?>
@@ -92,8 +105,19 @@
 </div>
 <?php endif; ?>
 </div>
+<script>
+    popup = document.getElementById("send-money-popup");
+    show_btn = document.getElementById("show-popup");
+    hide_btn = document.getElementById("hide-popup");
 
+    show_btn.addEventListener('click', function() {
+        popup.classList.add("show");
+    });
 
+    hide_btn.addEventListener("click", function() {
+        popup.classList.remove("show");
+    })
+</script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="js/addFriend.js"></script>
 <script src="js/likePost.js"></script>
