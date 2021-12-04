@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 03, 2021 at 03:15 PM
+-- Generation Time: Dec 04, 2021 at 10:04 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `velvet`
 --
-CREATE DATABASE IF NOT EXISTS `velvet` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `velvet`;
 
 -- --------------------------------------------------------
 
@@ -37,16 +35,6 @@ CREATE TABLE `comments` (
   `post_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `comments`
---
-
-INSERT INTO `comments` (`id`, `description`, `description_media_url`, `user_id`, `post_id`) VALUES
-(23, 'EZ !', '/', 1, 93),
-(26, 'dsadasd', '/', 9, 73),
-(28, 'BOG TE JEBO', '/', 8, 100),
-(29, 'Testni komentar !', '/', 1, 92);
-
 -- --------------------------------------------------------
 
 --
@@ -58,13 +46,6 @@ CREATE TABLE `comment_likes` (
   `comment_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `comment_likes`
---
-
-INSERT INTO `comment_likes` (`id`, `comment_id`, `user_id`) VALUES
-(21, 25, 8);
 
 -- --------------------------------------------------------
 
@@ -87,7 +68,9 @@ INSERT INTO `friends` (`id`, `user_id`, `user_id2`, `is_friend`) VALUES
 (202, 8, 9, 'true'),
 (214, 9, 1, 'true'),
 (215, 8, 1, 'true'),
-(217, 1, 6, 'true');
+(217, 1, 6, 'true'),
+(218, 9, 6, 'true'),
+(219, 8, 6, 'true');
 
 -- --------------------------------------------------------
 
@@ -102,27 +85,6 @@ CREATE TABLE `messages` (
   `message` text NOT NULL,
   `message_media_url` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `messages`
---
-
-INSERT INTO `messages` (`id`, `sender_id`, `reciever_id`, `message`, `message_media_url`) VALUES
-(93, 1, 6, 'Poruka', '/'),
-(94, 6, 1, 'Poruka', '/'),
-(95, 6, 1, 'Poruka', '/'),
-(96, 1, 6, 'Poruka', '/'),
-(97, 6, 1, 'Poruka', '/'),
-(98, 1, 6, 'Poruka', '/'),
-(99, 6, 1, 'Poruka', '/'),
-(100, 1, 6, 'Poruka', '/'),
-(101, 1, 6, 'Poruka', '/'),
-(102, 1, 6, 'Poruka', '/'),
-(103, 1, 6, 'Poruka', '/'),
-(104, 1, 6, 'Poruka', '/'),
-(105, 1, 6, 'Poruka', '/'),
-(106, 1, 6, 'isljhdalskjdhjklasd', '/'),
-(107, 1, 6, 'csadasda', '/');
 
 -- --------------------------------------------------------
 
@@ -159,13 +121,6 @@ CREATE TABLE `post_likes` (
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `post_likes`
---
-
-INSERT INTO `post_likes` (`id`, `post_id`, `user_id`) VALUES
-(253, 99, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -192,6 +147,42 @@ INSERT INTO `user` (`id`, `username`, `fullname`, `email`, `password`, `account_
 (6, 'Zyla', 'Marin Zilic', 'zyla@gmail.com', '12345', 'user', '/default.png', '/'),
 (8, 'Milan', 'Milan Eres', 'milan@gmail.com', '12345', 'user', '/default.png', '/'),
 (9, 'Nare', 'Josip Kordic', 'nare@gmail.com', '12345', 'user', '/0eb8bc784a1e90e86bdca774a41d3935.jpg', 'Hello everyone !!');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wallet`
+--
+
+CREATE TABLE `wallet` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `total_balance` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `wallet`
+--
+
+INSERT INTO `wallet` (`id`, `user_id`, `total_balance`) VALUES
+(1, 1, 0),
+(2, 9, 0),
+(3, 8, 0),
+(4, 6, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wallet_transactions`
+--
+
+CREATE TABLE `wallet_transactions` (
+  `id` int(11) NOT NULL,
+  `sender_id` int(11) NOT NULL,
+  `reciever_id` int(11) NOT NULL,
+  `value` int(11) NOT NULL,
+  `created_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Indexes for dumped tables
@@ -240,6 +231,18 @@ ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `wallet`
+--
+ALTER TABLE `wallet`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `wallet_transactions`
+--
+ALTER TABLE `wallet_transactions`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -259,7 +262,7 @@ ALTER TABLE `comment_likes`
 -- AUTO_INCREMENT for table `friends`
 --
 ALTER TABLE `friends`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=218;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=220;
 
 --
 -- AUTO_INCREMENT for table `messages`
@@ -271,18 +274,30 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
 
 --
 -- AUTO_INCREMENT for table `post_likes`
 --
 ALTER TABLE `post_likes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=254;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=257;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `wallet`
+--
+ALTER TABLE `wallet`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `wallet_transactions`
+--
+ALTER TABLE `wallet_transactions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
