@@ -3,7 +3,7 @@ class Post extends QueryBuilder
 {
 
     public $post_created_status = NULL;
-    public $error_message = false;
+    public $error_message = "false";
 
     public function addPost()
     {
@@ -25,38 +25,40 @@ class Post extends QueryBuilder
 
         $uploadPath = $currentDirectory . $uploadDirectory . basename($fileName);
 
-        if (isset($_POST['createPostBtn'])) {
+        if (isset($_POST['createPostBtn']) && $fileName != NULL) {
 
             if (!in_array($fileExtension, $fileExtensionsAllowed)) {
-                $this->error_message = false;
+                $this->error_message = "File type not allowed. File types allowed : jpeg, jpg, png.";
             }
 
             if ($fileSize > 4000000) {
-                $this->error_message = true;
+                $this->error_message = "File is too large.";
             }
 
-            if (empty($errors)) {
+            if ($this -> error_message == "false") {
                 $didUpload = move_uploaded_file($fileTmpName, $uploadPath);
                 $post_media_url = '/' . $fileName;
 
                 if ($didUpload) {
-                    $this->error_message = false;
+                    $this->error_message = "false";
                 } else {
-                    $this->error_message = true;
+                    $this->error_message = "Something went wrong! Try again.";
                 }
             } else {
-                $this->error_message = true;
+                $this->error_message = "Something went wrong! Try again.";
             }
         }
 
-        $sql = "INSERT INTO post VALUES(NULL,?,?,?,?)";
-        $query = $this->db->prepare($sql);
-        $query->execute([$post_description, $post_media_url, $user_id, $createdAt]);
+        if ($this -> error_message == "false") {
+            $sql = "INSERT INTO post VALUES(NULL,?,?,?,?)";
+            $query = $this->db->prepare($sql);
+            $query->execute([$post_description, $post_media_url, $user_id, $createdAt]);
 
-        if ($query) {
-            $this->post_created_status = true;
-        } else {
-            $this->post_created_status = false;
+            if ($query) {
+                $this->post_created_status = true;
+            } else {
+                $this->post_created_status = false;
+            }
         }
     }
 
@@ -74,25 +76,27 @@ class Post extends QueryBuilder
         }
     }
 
-    public function getSinglePost($id) {
+    public function getSinglePost($id)
+    {
         $post_id = $id;
 
         $sql = "SELECT * FROM post WHERE id = ?";
-        $query = $this -> db -> prepare($sql);
-        $query -> execute([$post_id]);
-        $result = $query -> fetch(PDO::FETCH_OBJ);
+        $query = $this->db->prepare($sql);
+        $query->execute([$post_id]);
+        $result = $query->fetch(PDO::FETCH_OBJ);
 
         return $result;
     }
 
-    public function getPostsByUserId($id) {
+    public function getPostsByUserId($id)
+    {
         $user_id = $id;
 
         $sql = "SELECT * FROM post WHERE user_id = ? ORDER BY id DESC";
-        $query = $this -> db -> prepare($sql);
-        $query -> execute([$user_id]);
+        $query = $this->db->prepare($sql);
+        $query->execute([$user_id]);
 
-        $result = $query -> fetchAll(PDO::FETCH_OBJ);
+        $result = $query->fetchAll(PDO::FETCH_OBJ);
 
         return $result;
     }

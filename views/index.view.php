@@ -2,6 +2,11 @@
 <?php require 'views/partials/navbar.php' ?>
 
 <div class="home-content-container">
+
+    <?php if ($post->error_message != "false") : ?>
+        <span class="send-error"><?php echo $post->error_message ?></span>
+    <?php endif; ?>
+
     <div class="home-create-post">
         <img src="views/assets/images<?php echo $user->getUserById($_SESSION['user']->id)->profile_picture_url; ?>" alt="">
         <form action="index.php" method="POST" enctype="multipart/form-data">

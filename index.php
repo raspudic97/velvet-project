@@ -9,7 +9,9 @@
     
     if(isset($_POST['createPostBtn'])) {
         $post -> addPost();
-        header("Location: index.php");
+        if($post -> error_message == "false") {
+            header("Location: index.php");
+        }
     }
 
     require 'views/index.view.php';

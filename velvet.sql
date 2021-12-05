@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 04, 2021 at 10:04 PM
+-- Generation Time: Dec 05, 2021 at 10:53 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -69,8 +69,8 @@ INSERT INTO `friends` (`id`, `user_id`, `user_id2`, `is_friend`) VALUES
 (214, 9, 1, 'true'),
 (215, 8, 1, 'true'),
 (217, 1, 6, 'true'),
-(218, 9, 6, 'true'),
-(219, 8, 6, 'true');
+(219, 8, 6, 'true'),
+(222, 6, 9, 'true');
 
 -- --------------------------------------------------------
 
@@ -105,9 +105,8 @@ CREATE TABLE `post` (
 --
 
 INSERT INTO `post` (`id`, `description`, `description_media_url`, `user_id`, `createdAt`) VALUES
-(73, 'Hello everyone ! Have you already watched Arcane ? Feel free to comment what you think about it. I think that it is amazing. Can not wait for new season.', '/jinx.jpg', 1, '2021-11-27 03:20:20'),
-(92, 'What do you think of my new digital painting ?', '/4k-desktop-wallpaper.-1920×1200.jpg', 1, '2021-11-27 18:07:39'),
-(102, 'Hello everyone !', '/', 1, '2021-12-03 03:30:34');
+(130, 'Have you already watched Arcane? Comment what you think about it...', '/jinx.jpg', 1, '2021-12-05 22:52:08'),
+(131, 'Hello everyone !', '/', 8, '2021-12-05 22:52:42');
 
 -- --------------------------------------------------------
 
@@ -146,7 +145,7 @@ INSERT INTO `user` (`id`, `username`, `fullname`, `email`, `password`, `account_
 (1, 'Mile97', 'Mile Raspudic', 'raspudic88@gmail.com', '123', 'admin', '/thumb-1920-1188254.jpg', 'Hello everyone. Im Mile, 23 years old. I made this social network for learning fullstack web development. Feel free to send me message about any bugs or features that you want me to add. Enjoy :)'),
 (6, 'Zyla', 'Marin Zilic', 'zyla@gmail.com', '12345', 'user', '/default.png', '/'),
 (8, 'Milan', 'Milan Eres', 'milan@gmail.com', '12345', 'user', '/default.png', '/'),
-(9, 'Nare', 'Josip Kordic', 'nare@gmail.com', '12345', 'user', '/0eb8bc784a1e90e86bdca774a41d3935.jpg', 'Hello everyone !!');
+(9, 'Nare', 'Josip Kordic', 'nare@gmail.com', '11', 'user', '/0eb8bc784a1e90e86bdca774a41d3935.jpg', 'Hello everyone !!');
 
 -- --------------------------------------------------------
 
@@ -157,7 +156,7 @@ INSERT INTO `user` (`id`, `username`, `fullname`, `email`, `password`, `account_
 CREATE TABLE `wallet` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `total_balance` int(11) NOT NULL
+  `total_balance` int(120) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -165,10 +164,10 @@ CREATE TABLE `wallet` (
 --
 
 INSERT INTO `wallet` (`id`, `user_id`, `total_balance`) VALUES
-(1, 1, 0),
-(2, 9, 0),
-(3, 8, 0),
-(4, 6, 0);
+(6, 9, 0),
+(7, 1, 0),
+(8, 6, 0),
+(9, 8, 0);
 
 -- --------------------------------------------------------
 
@@ -262,43 +261,43 @@ ALTER TABLE `comment_likes`
 -- AUTO_INCREMENT for table `friends`
 --
 ALTER TABLE `friends`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=220;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=223;
 
 --
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
 
 --
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
 
 --
 -- AUTO_INCREMENT for table `post_likes`
 --
 ALTER TABLE `post_likes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=257;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=258;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `wallet`
 --
 ALTER TABLE `wallet`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `wallet_transactions`
 --
 ALTER TABLE `wallet_transactions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

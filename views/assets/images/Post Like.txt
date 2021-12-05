@@ -1,0 +1,13 @@
+            <hr>
+
+            <div class="post-actions">
+                <form action="index.php?post_id=<?php echo $single_post->id?>" method="POST">
+                    <?php if ($post->getLikedPostById($single_post->id)) : ?>
+                        <button href="#"><i class="fas fa-heart"></i></button>
+                    <?php else : ?>
+                        <button name="likePostBtn"><i class="far fa-heart"></i></button>
+                    <?php endif; ?>
+                    <a href="#"><i class="far fa-comment"></i></a>
+                    <a href="#"><i class="fas fa-share"></i></a>
+                </form>
+            </div>
