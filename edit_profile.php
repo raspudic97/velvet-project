@@ -1,6 +1,11 @@
 <?php
 require_once 'bootstrap.php';
 
+if(!isset($_SESSION['user'])) {
+    header("Location: login_register.php");
+}
+
+
 if(isset($_GET['id']) && isset($_SESSION['user'])) {
     $message = "";
 

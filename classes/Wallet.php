@@ -126,8 +126,10 @@ class Wallet extends QueryBuilder
             $sql_3 = "INSERT INTO wallet_transactions VALUES(NULL,?,?,?,?)";
             $query_3 = $this->db->prepare($sql_3);
             $query_3->execute([$sender_id, $reciever_id, $value, $created_at]);
+
+            $this->send_money_error = "false";
         } else {
-            $this->send_money_error = "Sorry, you dont have enough money on your account.";
+            $this->send_money_error = "true";
         }
     }
 }

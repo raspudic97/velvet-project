@@ -1,6 +1,10 @@
 <?php 
     require_once 'bootstrap.php';
 
+    if(!isset($_SESSION['user'])) {
+        header("Location: login_register.php");
+    }
+
     $transactions = $wallet -> getTransactions($_GET['id']);
 
     if(isset($_POST['deposit-money-btn'])) {

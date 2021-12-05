@@ -3,7 +3,7 @@
 
 <div class="home-content-container">
     <div class="home-create-post">
-        <img src="views/assets/images<?php echo $user -> getUserById($_SESSION['user'] -> id) -> profile_picture_url; ?>" alt="">
+        <img src="views/assets/images<?php echo $user->getUserById($_SESSION['user']->id)->profile_picture_url; ?>" alt="">
         <form action="index.php" method="POST" enctype="multipart/form-data">
             <input class="post-description" type="text" name="post-description" placeholder="Create new post" autocomplete="off" required>
             <input type="file" name="image">

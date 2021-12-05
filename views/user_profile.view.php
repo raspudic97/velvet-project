@@ -15,6 +15,13 @@
 </div>
 
 <div class="profile-container">
+
+    <?php if($wallet -> send_money_error == "false"): ?>
+        <span class="deposit_success">Transfer successful. You can check your transactions in wallet.</span>
+    <?php elseif($wallet -> send_money_error == "true"): ?>
+        <span class="deposit_error">Something went wrong. Check your balance and try again.</span>
+    <?php endif; ?>
+
     <div class="user-info-container">
         <img src="views/assets/images<?php echo $user->getUserById($_GET['id'])->profile_picture_url; ?>" class="info-profile-picture">
 

@@ -21,6 +21,7 @@
         <a href="news.php"><i class="fas fa-newspaper"></i> News</a>
         <a href="chat.php?id=<?php echo $_SESSION['user'] -> id ?>"><i class="fas fa-envelope"></i> Messages</a>
         <a href="wallet.php?id=<?php echo $_SESSION['user'] -> id ?>"><i class="fas fa-wallet"></i> Wallet</a>
+        <a href="about_us.php"><i class="fas fa-info"></i> About Us</a>
     </div>
 </div>
 <?php endif; ?>
