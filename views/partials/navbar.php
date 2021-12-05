@@ -5,6 +5,7 @@
             <div class="icons-container">
                 <a href="search.php"><i class="fas fa-search"></i></a>
                 <a href="chat.php?id=<?php echo $_SESSION['user'] -> id ?>"><i class="fas fa-envelope icons-container-item"></i></a>
+                <a href="news.php"><i class="fas fa-newspaper icons-container-item"></i></a>
                 <a href="wallet.php?id=<?php echo $_SESSION['user'] -> id ?>"><i class="fas fa-wallet icons-container-item"></i></a>
                 <a href="logout.php"><i class="fas fa-sign-out-alt icons-container-item"></i></a>
                 <a href="user_profile.php?id=<?php echo $_SESSION['user'] -> id?>"><img src="views/assets/images<?php echo $user -> getUserById($_SESSION['user'] -> id) -> profile_picture_url; ?>" class="upper-header-profile-picture icons-container-item"></a>
