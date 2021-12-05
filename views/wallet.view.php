@@ -4,7 +4,7 @@
 <div class="wallet-container">
     <h3 class="deposit-title">Deposit money to your account</h3>
     <form action="wallet.php?id=<?php echo $_SESSION['user']->id ?>" method="POST">
-        <input class="deposit-input" type="number" name="deposit-amount" placeholder="Deposit amount" autocomplete="off" required>
+        <input class="deposit-input" type="number" name="deposit-amount" placeholder="Deposit amount" autocomplete="off" min="1" required>
         <input class="deposit-money-btn" type="submit" name="deposit-money-btn">
     </form>
 

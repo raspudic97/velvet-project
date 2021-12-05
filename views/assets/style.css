@@ -670,15 +670,25 @@ hr {
 
 .profile-container {
   width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
-.profile-container span {
-  width: 70%;
-  margin: 2rem auto;
-  display: block;
+.send-success{
+  margin: 2rem 0 0 0;
   text-align: center;
   color: limegreen;
   border: 1px solid limegreen;
+  border-radius: 5px;
+  padding: 0.5rem 0.75rem;
+}
+
+.send-error {
+  margin: 2rem 0 0 0;
+  text-align: center;
+  color: var(--sub-color-rose);
+  border: 1px solid var(--sub-color-rose);
   border-radius: 5px;
   padding: 0.5rem 0.75rem;
 }
@@ -1485,6 +1495,20 @@ label {
   border-radius: 50%;
   object-fit: cover;
   margin: 0 1rem;
+}
+
+.not-found-container {
+  height: 86vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.not-found-container img {
+  width: 20%;
+  height: auto;
+  object-fit: cover;
 }
 
 

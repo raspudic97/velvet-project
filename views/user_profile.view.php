@@ -6,7 +6,7 @@
         <h3>Send money to <?php echo explode(" ", $user -> getUserById($_GET['id']) -> fullname)[0] ?></h3>
 
         <form action="user_profile.php?id=<?php echo $_GET['id'] ?>" method="POST">
-            <input class="send-amount-input" type="number" name="send-amount" placeholder="Amount of money" required autocomplete="off">
+            <input class="send-amount-input" type="number" name="send-amount" placeholder="Amount of money" min="1" required autocomplete="off">
             <input class="send-money-btn" type="submit" name="send-money-btn">
         </form>
     </div>
@@ -17,9 +17,9 @@
 <div class="profile-container">
 
     <?php if($wallet -> send_money_error == "false"): ?>
-        <span class="deposit_success">Transfer successful. You can check your transactions in wallet.</span>
+        <span class="send-success">Transfer successful. You can check your transactions in wallet.</span>
     <?php elseif($wallet -> send_money_error == "true"): ?>
-        <span class="deposit_error">Something went wrong. Check your balance and try again.</span>
+        <span class="send-error">Something went wrong. Check your balance and try again.</span>
     <?php endif; ?>
 
     <div class="user-info-container">

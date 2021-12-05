@@ -1,6 +1,10 @@
 <?php
     require_once 'bootstrap.php';
 
+    if(count((array) $friend -> getFriendsById($_GET['id'])) == 0) {
+        header("Location: 404.php");
+    }
+
     if(!isset($_SESSION['user'])) {
         header("Location: login_register.php");
     }
