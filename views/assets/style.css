@@ -1589,6 +1589,10 @@ label {
   .cards-container {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .wallet-container {
+    width: 90%;
+  }
 }
 
 @media only screen and (max-width: 710px) {
