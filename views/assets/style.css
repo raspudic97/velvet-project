@@ -1542,6 +1542,19 @@ label {
 
 @media only screen and (max-width: 900px) {
 
+  .login-register-forms {
+    height: auto;
+    flex-direction: column;
+  }
+
+  .login-container {
+    margin: 2rem 0;
+  }
+
+  .register-container {
+    margin: 2rem 0;
+  }
+
   .vizija {
     width: 100%;
   }
