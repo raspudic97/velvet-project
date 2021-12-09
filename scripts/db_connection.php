@@ -2,7 +2,7 @@
 
 session_start();
 //Database connection
-$dbhost = 'studenti.sum.ba';
+$dbhost = 'localhost';
 $dbuser = 'pzi202022';
 $dbpass = 'csdigital2022';
 $db = 'pzi202022';
