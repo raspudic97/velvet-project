@@ -2,9 +2,9 @@
 
 return [
     "database" => [
-        "host" => "localhost",
-        "user" => "root",
-        "password" => "",
-        "dbname" => "velvet"
+        "host" => "studenti.sum.ba",
+        "user" => "pzi202022",
+        "password" => "csdigital2022",
+        "dbname" => "pzi202022"
     ]
 ];

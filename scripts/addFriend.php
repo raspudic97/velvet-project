@@ -1,13 +1,7 @@
 <?php
-session_start();
-//Database connection
-$dbhost = 'localhost';
-$dbuser = 'root';
-$dbpass = '';
-$db = 'velvet';
-$conn = mysqli_connect($dbhost, $dbuser, $dbpass , $db) or die($conn); 
- 
-//Toggle data in database
+    require_once 'db_connection.php';
+
+ //Toggle data in database
 
     $user_id = $_POST['user_id'];
     $user_id2 = $_SESSION['user'] -> id;

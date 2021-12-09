@@ -1,11 +1,5 @@
 <?php
-session_start();
-//Database connection
-$dbhost = 'localhost';
-$dbuser = 'root';
-$dbpass = '';
-$db = 'velvet';
-$conn = mysqli_connect($dbhost, $dbuser, $dbpass , $db) or die($conn); 
+    require_once 'db_connection.php';
  
 //Toggle data in database
 
@@ -18,5 +12,3 @@ $conn = mysqli_connect($dbhost, $dbuser, $dbpass , $db) or die($conn);
     } else {
       mysqli_query($conn, "DELETE FROM comment_likes WHERE comment_id = '$comment_id' AND user_id = '$user_id'");
     }
-
-?>

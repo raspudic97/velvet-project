@@ -1,11 +1,5 @@
 <?php
-session_start();
-//Database connection
-$dbhost = 'localhost';
-$dbuser = 'root';
-$dbpass = '';
-$db = 'velvet';
-$conn = mysqli_connect($dbhost, $dbuser, $dbpass , $db) or die($conn); 
+    require_once 'db_connection.php';
  
 //Toggle data in database
 
