@@ -27,7 +27,7 @@ function ajsearch(logged_user) {
           //Dodaj podatke u rezultat
           let user_info = document.createElement("a");
           user_info.href =
-            "http://localhost/velvetproject/user_profile.php?id=" + res["id"];
+            "http://pzi202022.studenti.sumit.sum.ba/user_profile.php?id=" + res["id"];
           user_info.innerHTML = `${res["fullname"]} - ${res["username"]}`;
           user_info.classList.add("user-search-result");
           result_container.appendChild(user_info);
